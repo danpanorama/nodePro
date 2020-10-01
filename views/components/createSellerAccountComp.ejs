@@ -1,0 +1,28 @@
+<div class="section">
+  <h1>login as a seller</h1>
+  <form action="/login/logasseller" class="loginForm" method="POST">
+    <div class="inputFlexRow">
+      <label for="store_name">store name</label>
+      <input type="text" name="store_name" placeholder="store name" />
+      <label for="password">password</label>
+      <input type="password" name="password" placeholder="password" />
+      <label for="store_email">store email</label>
+      <input type="email" name="store_email" placeholder="email" />
+      <label for="store_view">view </label>
+      <select name="store_view" id="">
+        <option value="L">L</option>
+        <option value="D">D</option>
+      </select>
+      <label for="store_idcart">ID </label>
+      <input type="text" name="store_idcart" placeholder="id cart" />
+      <label for="remember">remember me</label>
+      <input type="checkbox" name="remember" id="remember" />
+      <br />
+      <br />
+      <br />
+
+      <button>send</button>
+      <div><%=err%></div>
+    </div>
+  </form>
+</div>

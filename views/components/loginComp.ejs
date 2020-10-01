@@ -1,0 +1,30 @@
+<div class="section">
+  <h1 class="LogInHEader">login</h1>
+  <form action="/login" class="loginForm" method="POST">
+    <div class="inputFlexRow">
+      <label for="userNameLogin">USER:</label>
+      <input
+        type="text"
+        id="usernameLogin"
+        name="userNameLogin"
+        class="inputs"
+        required
+      />
+      <label for="passwordLogin">PASSWORD:</label>
+      <input
+        type="password"
+        id="passwordLogin"
+        name="passwordLogin"
+        class="inputs"
+        required
+      />
+    </div>
+
+    <div>
+      <label for="remember">remember me</label>
+      <input type="checkbox" name="remember" id="remember" />
+    </div>
+    <button>login</button>
+  </form>
+  <div><%=err%></div>
+</div>

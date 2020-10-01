@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <!-- <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/navbar.css" />
+    <link rel="stylesheet" href="/stylesheets/store.css" />
+    <link rel="stylesheet" href="/stylesheets/profile.css" /> -->
+    <link rel="stylesheet" href="/stylesheets/Allsite.css" />
+    <link rel="stylesheet" href="/stylesheets/media.css" />
+    <script src="javascripts/events.js"></script>
+    <script src="javascripts/windowWidt.js"></script>
+  </head>
+  <body class="<%=view=='L'?'lite':'body'%>">
+    <%- include("components/nav",{page:page,loginName:loginName}) %>
+    <div class="reka">
+      <%=err%> <%-
+      include("components/componentot/userInterface",{userStoreData:userStoreData,userNumber:userNumber,loginName:loginName,userAllData:userAllData})
+      %>
+
+      <div class="profileInfo">
+        <div class="secOne"></div>
+      </div>
+      <%if(storePass){%>
+      <button class="openwindow">upload new item</button>
+
+      <div class="stickys windowl"><%- include("components/setNewItem") %></div>
+      <%}%> <%if(storePass){%>
+      <div class="stickys"></div>
+      <%}%> <%if(items){%>
+      <div class="divOfItems">
+        <div class="sectionhaf">
+          <%-
+          include("components/storeItems",{data:items,storePass:storePass,loginName:loginName})
+          %>
+        </div>
+      </div>
+      <%}else{%>
+      <h1>not found items</h1>
+
+      <%}%>
+    </div>
+  </body>
+</html>

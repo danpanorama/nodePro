@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <!-- <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/navbar.css" /> -->
+    <link rel="stylesheet" href="/stylesheets/Allsite.css" />
+    <link rel="stylesheet" href="/stylesheets/media.css" />
+  </head>
+  <body class="<%=view=='L'?'lite':'body'%>">
+    <%- include("components/nav",{page:page,loginName:loginName}) %>
+
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <h1>about</h1>
+  </body>
+</html>

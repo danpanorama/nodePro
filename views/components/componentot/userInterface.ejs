@@ -1,0 +1,106 @@
+<div class="infoProfile">
+  <%if(userStoreData){%>
+  <h2>store enterface</h2>
+  <h1 class="userHeaderInfo"><%=loginName%></h1>
+  <h1 class="userHeaderInfo"><%=userStoreData.store_idcart%></h1>
+  <h1 class="userHeaderInfo"><%=userStoreData.store_email%></h1>
+  <h1 class="userHeaderInfo"><%=userStoreData.store_view%></h1>
+
+  <h1 class="userHeaderInfo"><%=userStoreData.idcart%></h1>
+
+  <button class="openupdatewindow">update the store</button>
+
+  <div class="updatewindow">
+    <div class="fulls">
+      <div class="flexEnd">
+        <button class="openupdatewindow">XX</button>
+      </div>
+      <form
+        class="flexColumJcenterAcenter"
+        action="/profile/updateStore"
+        method="POST"
+      >
+        <input
+          readonly
+          name="store_number"
+          type="text"
+          value="<%=userNumber%>"
+        />
+        <input
+          name="store_idcart"
+          type="text"
+          value="<%=userStoreData.store_idcart%>"
+        />
+        <input
+          name="store_name"
+          type="text"
+          value="<%=userStoreData.store_name%>"
+        />
+
+        <input type="text" required name="password" />
+
+        <input
+          type="text"
+          required
+          value="<%=userStoreData.store_email%>"
+          name="store_email"
+        />
+
+        <select id="view" name="store_view">
+          <option value="L">L</option>
+          <option value="D">D</option>
+        </select>
+        <button>send</button>
+      </form>
+    </div>
+  </div>
+  <%}%> <%if(userAllData){%>
+  <h2 class="userHeaderInfo">user enterface</h2>
+  <h1 class="userHeaderInfo"><%=userAllData.client_email%></h1>
+
+  <h1 class="userHeaderInfo"><%=loginName%></h1>
+  <h1 class="userHeaderInfo"><%=userAllData.client_phon%></h1>
+
+  <button class="openupdatewindow">update the user</button>
+  <div class="updatewindow">
+    <div class="fulls">
+      <div class="flexEnd"><button class="openupdatewindow">X</button></div>
+
+      <form
+        action="/profile/updateUser"
+        class="flexColumJcenterAcenter"
+        method="POST"
+      >
+        <h1>update the user</h1>
+        <input readonly name="userID" type="text" value="<%=userNumber%>" />
+        <input
+          name="client_fullName"
+          type="text"
+          value="<%=userAllData.client_fullName%>"
+        />
+
+        <input type="text" required name="password" />
+
+        <input
+          type="text"
+          required
+          value="<%=userAllData.client_email%>"
+          name="client_email"
+        />
+
+        <input
+          type="text"
+          required
+          value="<%=userAllData.client_phon%>"
+          name="client_phon"
+        />
+        <select id="view" name="client_view">
+          <option value="L">L</option>
+          <option value="D">D</option>
+        </select>
+        <button>send</button>
+      </form>
+    </div>
+  </div>
+  <%}%>
+</div>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>login</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/navbar.css" />
+    <link rel="stylesheet" href="/stylesheets/loglinks.css" />
+    <link rel="stylesheet" href="/stylesheets/media.css" />
+    <script src="/javascripts/auth.js"></script>
+  </head>
+  <body class="<%=view=='L'?'lite':'body'%>">
+    <%- include("components/nav", {loginName:loginName,massage:massage}) %> <%-
+    include("components/logLinkComp",{page:page}) %>
+
+    <div class="flexCenter">
+      <div class="logli w100" id="logli">
+        <div class="compLOG">
+          <%- include("components/loginComp", {err:err}) %>
+        </div>
+      </div>
+      <div class="displaynon w100 ca" id="logca">
+        <div class="compLOG">
+          <%- include("components/creatLoginComp", {err:err}) %>
+        </div>
+      </div>
+
+      <div class="displaynon w100 csa" id="logcsa">
+        <div class="compLOG">
+          <%- include("components/createSellerAccountComp", {err:err}) %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

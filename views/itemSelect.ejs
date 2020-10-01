@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/navbar.css" />
+    <link rel="stylesheet" href="/stylesheets/store.css" />
+    <!-- <link rel="stylesheet" href="/stylesheets/Allsite.css" /> -->
+    <link rel="stylesheet" href="/stylesheets/media.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <script src="/javascripts/chart.js"></script>
+    <script src="/javascripts/windowWidt.js"></script>
+  </head>
+  <body class="<%=view=='L'?'lite':'body'%>">
+    <%- include("components/nav",{page:page,loginName:loginName}) %>
+    <%if(clientNumber == data[0].StoreNumber){%>
+    <h1>your item</h1>
+
+    <%}else{%>
+
+    <h1>the item you whant to bay</h1>
+    <%}%> <%-
+    include("components/storeResite",{data:data,loginName:loginName,clientNumber:clientNumber})
+    %>
+  </body>
+</html>

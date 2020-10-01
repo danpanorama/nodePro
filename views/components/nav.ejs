@@ -1,0 +1,73 @@
+<% let arr
+=[{title:"HOME",url:"/"},{title:"ABOUT",url:"/about"},{title:"STORE",url:"/store"}]
+%>
+<div class="allTheComp">
+  <nav role="navigation">
+    <div id="menuToggle">
+      <input type="checkbox" />
+      <span></span>
+      <span></span>
+      <span></span>
+      <ul id="menu">
+        <a href="/"><li>Home</li></a>
+        <a href="/about"><li>About</li></a>
+        <a href="/login"><li>login</li></a>
+        <%if(loginName){%>
+        <a href="/profile"><li>profile</li></a>
+        <%}%>
+
+        <a href="/store"><li>Show me store</li></a>
+        <form action="/darklite<%=page%>" method="POST">
+          <button>dark/lite</button>
+        </form>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="navBarCollaps">
+    <div class="serchdiv">
+      <div class="logo">
+        <h1>DanielGal</h1>
+      </div>
+      <form action="/store" method="GET">
+        <p class="txt">search</p>
+        <input type="text" class="inputText inputs input" name="serchQuary" />
+        <button>search</button>
+      </form>
+    </div>
+    <div class="navbarOverAll">
+      <ul class="ulLinks flexRowJcenterAcenter">
+        <%for(let item of arr){%>
+
+        <li class="liLinks">
+          <a
+            href="<%=item.url%>"
+            class="Links <%=page==item.url?'active':'momo'%>"
+            ><%=item.title%></a
+          >
+        </li>
+        <%}%> <% if(loginName) { %>
+        <li class="liLinks">
+          <a class="Links <%=page=='/login'?'active':'momo'%>" href="/profile">
+            <%=loginName%>
+          </a>
+        </li>
+
+        <% } else { %>
+        <li class="liLinks">
+          <a class="Links <%=page=='/login'?'active':'momo'%>" href="/login"
+            >LOGIN</a
+          >
+        </li>
+
+        <% } %> <%if(loginName){%>
+        <form action="/login/logout" method="POST">
+          <button>log out</button><br />
+        </form>
+        <%}else{%>
+        <h2 class="textsss">welcome new user</h2>
+        <%}%>
+      </ul>
+    </div>
+  </div>
+</div>

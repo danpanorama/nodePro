@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/stylesheets/media.css" />
+    <link rel="stylesheet" href="/stylesheets/navbar.css" />
+    <link rel="stylesheet" href="/stylesheets/home.css" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <script
+      src="https://kit.fontawesome.com/2588cf64c4.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="<%=view=='L'?'lite':'body'%>">
+    <%-
+    include("components/nav",{page:page,loginName:loginName,massage:massage}) %>
+
+    <div class="heading">
+      <video class="video" autoplay loop muted>
+        <source class="video" src="/img/namal.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <div class="threestuf">
+      <div class="cardsStuff">
+        <h1>stuff</h1>
+        <p>other stuff in here</p>
+      </div>
+      <div class="cardsStuff">
+        <h1>stuff</h1>
+        <p>other stuff in here</p>
+      </div>
+      <div class="cardsStuff">
+        <h1>stuff</h1>
+        <p>other stuff in here</p>
+      </div>
+    </div>
+    <div class="storeSec"></div>
+    <div class="beautifulSectionOfGrid">
+      <div class="foreSquar">
+        <div class="square1">
+          <h1>hello</h1>
+          <p>somthing in here boss</p>
+        </div>
+        <div class="square1 odd">2</div>
+        <div class="square1">
+          <h1>hello</h1>
+          <p>somthing in here boss</p>
+        </div>
+        <div class="square1 odd1">4</div>
+      </div>
+      <div class="foreSquar">
+        <div class="square evena">a5</div>
+        <div class="square">
+          <h1>hello</h1>
+          <p>somthing in here boss</p>
+        </div>
+        <div class="square evena1">a7</div>
+        <div class="square">
+          <h1>hello</h1>
+          <p>somthing in here boss</p>
+        </div>
+      </div>
+    </div>
+    <div class="storeSec"></div>
+  </body>
+</html>

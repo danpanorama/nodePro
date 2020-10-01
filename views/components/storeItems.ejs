@@ -1,0 +1,115 @@
+<%if(data.length > 0){%> <%-
+include("../components/componentot/totalSell",{data:items}) %> <%let x = 1,y=0%>
+<%for(let item of data ){%>
+
+<div class="flexrowforProfile"></div>
+
+<div class="itemCard">
+  <div class="card">
+    <div class="img">
+      <%if(item.file.data){%>
+      <img
+        class="pic"
+        src="data:image/<%=item.file.contentType%>;base64, 
+    <%=item.file.data.toString('base64')%>"
+        alt=""
+      />
+      <%}else{%>
+      <h3>no pictur</h3>
+      <%}%>
+    </div>
+    <%if(item.sum>1){%>
+    <p class="posisionAB">X<%=item.sum%></p>
+
+    <%}%> <%if(storePass){%>
+
+    <div class="productName">
+      <p class="paregraph"><b> id:</b><%=item._id%></p>
+    </div>
+    <%}else{%>
+    <div class="productName">
+      <p class="paregraph"><b> id:</b><%=item.ID%></p>
+    </div>
+    <%}%>
+    <div class="storeName">
+      <h2><b>store ffname:</b> <%=item.StoreName%></h2>
+    </div>
+    <div class="productTopic">
+      <p class="paregraph"><b>product topic:</b> <%=item.itemTopic%></p>
+    </div>
+    <div class="discription">
+      <p class="paregraph">
+        <b>product discription:</b> <%=item.itemDiscription%>
+      </p>
+    </div>
+    <h1>price for one : $<%=item.itemPrice%></h1>
+    <div class="price marg12">
+      <h1><b>$</b><%=item.itemPrice * item.sum%></h1>
+    </div>
+    <%if(storePass){%>
+    <div class="infoLikes">
+      <h1><b>sold: </b><%=item.sold%></h1>
+
+      <h1><b>like: </b><%=item.userLikes.length%></h1>
+
+      <h1><b>unlike: </b><%=item.userUnlike.length%></h1>
+    </div>
+
+    <%}%>
+
+    <div class="flexrowbetween marg12">
+      <form action="/store/delete/<%=item._id%>" method="POST">
+        <button>delete</button>
+      </form>
+      <%if(storePass){%>
+      <form
+        class="flexColumJcenterAcenter marg12"
+        action="/store/<%=item._id%>"
+        method="GET"
+      >
+        <button>chake the item</button>
+      </form>
+      <%}%> <%if(storePass){%>
+
+      <!-- <button whare="<%=item.itemID%>" name="<%=item.itemID%>">update</button> -->
+      <button class="updateButton">update</button>
+
+      <%}else{%>
+
+      <form class="" action="/store/<%=item.ID%>" method="GET">
+        <button>bay now</button>
+      </form>
+      <h1><%=x++%></h1>
+      <%}%>
+    </div>
+    <div class="hiddneformUpdate hiddens">
+      <form
+        class="updateForm"
+        action="/store/update"
+        method="POST"
+        enctype="multipart/form-data"
+      >
+        <input type="text" readonly name="itemID" value="<%=item._id%>" />
+        name
+        <input type="text" name="itemName" value="<%=item.itemName%>" />
+        discription
+        <input
+          type="text"
+          name="itemDiscription"
+          value="<%=item.itemDiscription%>"
+        />
+        topic
+        <input type="text" name="itemTopic" value="<%=item.itemTopic%>" />
+        price
+        <input type="text" name="itemPrice" value="<%=item.itemPrice%>" />
+        image
+        <input type="file" name="file" />
+        <button>update</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<%}%> <%}else{%>
+<h1>not found</h1>
+<%}%>

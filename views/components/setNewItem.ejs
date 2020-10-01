@@ -1,0 +1,28 @@
+<button class="openwindow">X</button>
+<h1>adit your own item now!</h1>
+
+<form
+  action="/store/setitems"
+  class="itemsAditForm"
+  enctype="multipart/form-data"
+  method="POST"
+>
+  <select id="topic" name="itemTopic">
+    <option value="games">games</option>
+    <option value="kitchen">kitchen</option>
+    <option value="kids">kids</option>
+    <option value="music">music</option>
+    <option value="toilet">toilet</option>
+    <option value="sport">sport</option>
+    <option value="gadgets">gadgets</option>
+    <option value="cloths">cloths</option></select
+  ><br />
+  <input type="file" name="file" />
+  <input type="text" name="itemName" placeholder="name" required /><br />
+
+  <input type="number" name="itemPrice" placeholder="price" required /><br />
+  <textarea name="itemDiscript" id="" cols="30" rows="10" required></textarea>
+  <br />
+
+  <button>set</button>
+</form>

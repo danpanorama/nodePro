@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="stylesheet" href="/stylesheets/navbar.css" />
+    <link rel="stylesheet" href="/stylesheets/store.css" />
+    <link rel="stylesheet" href="/stylesheets/media.css" />
+  </head>
+  <body class="<%=view=='L'?'lite':'body'%>">
+    <%- include("components/nav",{page:page,loginName:loginName}) %>
+
+    <h1 class="headers">store</h1>
+    <div class="contain">
+      <div class="sectionStore grid">
+        <%-
+        include("components/itemStoreProducts",{data:data,loginName:loginName,clientNumber:clientNumber,storecase:storecase})
+        %>
+      </div>
+    </div>
+
+    <div class="skipLimit"></div>
+  </body>
+</html>

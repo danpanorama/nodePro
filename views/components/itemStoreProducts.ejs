@@ -1,0 +1,80 @@
+<%let sum = 1%><%if(data.length>0){%> <%for(let item of data ){%> <%let price
+=item.itemPrice%>
+
+<div class="itemCard openClike">
+  <div class="card">
+    <form action="/store/edit/<%=item._id%>" method="POST">
+      <div class="img">
+        <%if(item.file.data){%>
+        <img
+          class="pic"
+          src="data:image/<%=item.file.contentType%>;base64, 
+    <%=item.file.data.toString('base64')%>"
+          alt=""
+        />
+        <%}else{%>
+        <div class="nopictiore flexColumJcenterAcenter"><h3>no pictur</h3></div>
+        <%}%>
+      </div>
+
+      <h2 class="headerTow" name="<%=item.itemName%>"><%=item.itemName%></h2>
+
+      <div class="productTopic">
+        <p class="paregraph" name="<%=item.itemTopic%>">
+          <b>topic:</b> <%=item.itemTopic%>
+        </p>
+      </div>
+
+      <div class="price">
+        <h1 class="txtalin fsize100" name="<%=item.itemPrice%>">
+          <b>$ </b>
+          <%=price * sum %>
+        </h1>
+      </div>
+      <div class="productTopic">
+        <p class="paregraph" name="<%=item.itemTopic%>">
+          <b>sold:</b> <%=item.sold%><b> </b>
+        </p>
+      </div>
+
+      <p class="paregraph" name="<%=item.itemTopic%>">
+        <b>likes:</b> <%=item.userLikes.length%>
+      </p>
+      <p class="paregraph" name="<%=item.itemTopic%>">
+        <b>commends:</b> <%=item.userUnlike.length%>
+      </p>
+
+      <%if(storecase){%>
+      <p>cenot adit</p>
+      <%}else{%>
+
+      <input
+        type="text"
+        class="displaynon"
+        name="itemName"
+        value="<%=item.itemName%>"
+      />
+
+      <input type="number" value="1" name="sum" />
+      <button>add</button>
+      <%}%>
+    </form>
+
+    <%if(clientNumber == item.StoreNumber){%>
+    <h1>your item</h1>
+
+    <%}else{%>
+    <form
+      class="flexColumJcenterAcenter marg12"
+      action="/store/<%=item._id%>"
+      method="GET"
+    >
+      <button>bay now</button>
+    </form>
+    <%}%>
+  </div>
+</div>
+
+<%}%> <%}else{%>
+<h1>not found any items</h1>
+<%}%>

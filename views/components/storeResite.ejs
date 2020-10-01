@@ -1,0 +1,114 @@
+<%if(data.length>0){%><% let isLike = false%> <%for(let item of data ){%>
+<%for(let i = 0; i < item.userLikes.length; i++){%> <%if(loginName
+==item.userLikes[i].name &&clientNumber==item.userLikes[i].number){%> <% isLike
+= true%> <%}else{%> <% isLike = false%> <%}%> <%}%>
+
+<div class="flexrowbetween">
+  <div class="itemCard  reesit">
+    <div class="card">
+      <div class="img">
+        <%if(item.file.data){%>
+        <img
+          height="80px"
+          width="80px"
+          class="pic"
+          src="data:image/<%=item.file.contentType%>;base64, 
+        <%=item.file.data.toString('base64')%>"
+          alt=""
+        />
+        <%}else{%>
+        <h3>no pictur</h3>
+        <%}%>
+      </div>
+      <div class="productName">
+        <p class="paregraph"><b>prucoct name:</b><%=item.itemName%></p>
+      </div>
+      <div class="discription">
+        <p class="paregraph">
+          <b>product discription:</b> <%=item.itemDiscription%>
+        </p>
+      </div>
+      <div class="productTopic">
+        <p class="paregraph"><b>product topic:</b> <%=item.itemTopic%></p>
+      </div>
+      <div class="storeName">
+        <h2><b>store name:</b> <%=item.StoreName%></h2>
+      </div>
+      <div class="price">
+        <h1><b>price: $</b><%=item.itemPrice%></h1>
+      </div>
+
+      <%if(clientNumber == item.StoreNumber){%>
+        <h1>your item</h1>
+
+        <%}else{%>
+
+      <div class="buttunsdiv">
+        <form method="POST" action="/likes/baynow/<%=item._id%>">
+          <button>baynow</button>
+        </form>
+      </div>
+      <%}%>
+    </div>
+  
+  </div>
+  <div class="flexrow statistic">
+    
+    <div>sold: <%=item.sold%></div>
+    <div>unsold: <%=item.unsold%></div>
+    <div>Likes: <%=item.userLikes.length%></div>
+    <div>commends: <%=item.userUnlike.length%></div>
+  </div>
+</div>
+
+  <div class="statistic reesit">
+    
+    <div class="flexrow">
+      <div>sold: <%=item.sold%></div>
+      <div>unsold: <%=item.unsold%></div>
+      <div>Likes: <%=item.userLikes.length%></div>
+      <div>commends: <%=item.userUnlike.length%></div>
+    </div>
+
+
+    <%if(isLike){%>
+    <form
+      method="POST"
+      action="/likes/unLike/<%=item._id%>"
+      class="buttonDisLike"
+    >
+      <button class="changeButton">disLike <%=item.userLikes.length%></button>
+    </form>
+    <%}else{%>
+    <form action="/likes/<%=item._id%>" method="POST">
+      <button class="changeButton">like <%=item.userLikes.length%></button><p></p>
+    </form>
+    <%}%>
+
+    <form action="/likes/badcommend/<%=item._id%>" method="POST">
+      <!-- <select name="commend" id="">
+        <option value="broken">broken</option>
+        <option value="expensiv">expensiv</option>
+      </select> -->
+      <div>
+        <input type="text" name="commend" required />
+
+        <button class="changeButton">send</button>
+      </div>
+    </form>
+    <div class="commendSection">
+      <div class="commend">
+        <%for(let i = 0 ; i< item.userUnlike.length; i++){%>
+
+        <p class="comm">
+          <%=item.userUnlike[i].name%> : <%=item.userUnlike[i].text%>
+        </p>
+
+        <%}%>
+      </div>
+    </div>
+  </div>
+  <%}%> <%}else{%>
+  <h1>not found</h1>
+  <%}%>
+</div>
